@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = "nested_form"
   s.version     = NestedForm::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Ryan Bates", "Andrea Singh"]
+  s.authors     = ["Ryan Bates", "Andrea Singh", "Jean-Dominique Morani"]
   s.email       = ["info@madebydna.com"]
-  s.homepage    = "http://github.com/madebydna/nested_form"
+  s.homepage    = "http://github.com/jdmorani/nested_form"
   s.summary     = "Gem to conveniently handle multiple models in a single form."
   s.description = "Gem to conveniently handle multiple models in a single form. Rails 2 plugin by Ryan Bates converted into a gem."
 
@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   s.files        = `git ls-files`.split("\n")
   s.executables  = `git ls-files`.split("\n").select{|f| f =~ /^bin/}
   s.require_path = 'lib'
+  
+  s.add_dependency('simple_form', '>= 1.3.0')
 end
