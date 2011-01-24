@@ -1,5 +1,6 @@
 class SimpleForm::FormBuilder
-  def link_to_add(name, association)
+  def link_to_add(name, association, html_options = {})
+    html_options.merge!(:class => "add_nested_fields", "data-association" => association)
     @fields ||= {}
     @template.after_nested_form(association) do
       model_object = object.class.reflect_on_association(association).klass.new
@@ -8,7 +9,7 @@ class SimpleForm::FormBuilder
       output.safe_concat('</div>')
       output
     end
-    @template.link_to(name, "javascript:void(0)", :class => "add_nested_fields", "data-association" => association)
+    @template.link_to(name, "javascript:void(0)", html_options)
   end
   
   def link_to_remove(name)
@@ -24,6 +25,7 @@ class SimpleForm::FormBuilder
 
   
   def fields_for_nested_model(name, association, args, block = nil)
+    console.log(association)
     output = '<div class="fields">'.html_safe
     if block.nil?
       block = lambda{ |f|
