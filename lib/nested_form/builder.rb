@@ -25,7 +25,6 @@ class SimpleForm::FormBuilder
 
   
   def fields_for_nested_model(name, association, args, block = nil)
-    console.log(association)
     output = '<div class="fields">'.html_safe
     if block.nil?
       block = lambda{ |f|
