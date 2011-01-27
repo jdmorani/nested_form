@@ -27,9 +27,11 @@ class SimpleForm::FormBuilder
   def fields_for_nested_model(name, association, args, block = nil)
     output = '<div class="fields">'.html_safe
     if block.nil?
-      block = lambda{ |f|
-        @template.render :partial => "#{association.class.name.downcase}_fields", :locals => {:f => f}
-      }
+      block = lambda do |f|
+        contents = @template.render :partial => "#{association.class.name.downcase}_fields", :locals => {:f => f}
+        template.concat(contents)
+        contents        
+      end
     end
     output << super
     output.safe_concat('</div>')
