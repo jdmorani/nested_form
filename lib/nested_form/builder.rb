@@ -1,5 +1,6 @@
 class SimpleForm::FormBuilder
   def link_to_add(name, association, html_options = {})
+    association = association.to_sym
     html_options.merge!(:class => "add_nested_fields", "data-association" => association)
     @fields ||= {}
     @template.after_nested_form(association) do
